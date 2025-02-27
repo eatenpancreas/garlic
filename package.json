@@ -11,9 +11,9 @@
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "test:e2e": "playwright test",
-    "test:all": "cargo test && bun spec:get && playwright test",
-    "spec": "cargo set-version --bump patch --package server && cargo test test_load_spec && bun spec:get",
+    "test:unit": "vitest",
+    "test:all": "cargo test && bun spec:get && vitest",
+    "spec": "cargo set-version --bump patch --package server && cargo test test_load_spec && bun spec:get && vitest run",
     "spec:get": "openapi-ts -i spec.yml -o src/lib/client -c @hey-api/client-fetch",
     "format": "prettier --write .",
     "lint": "prettier --check ."
@@ -21,11 +21,14 @@
   "devDependencies": {
     "@hey-api/client-fetch": "^0.8.1",
     "@hey-api/openapi-ts": "^0.64.6",
-    "@playwright/test": "^1.49.1",
+    "@modyfi/vite-plugin-yaml": "^1.1.1",
     "@sveltejs/adapter-auto": "^4.0.0",
     "@sveltejs/kit": "^2.16.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
     "@tailwindcss/vite": "^4.0.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/svelte": "^5.2.4",
+    "jsdom": "^26.0.0",
     "prettier": "^3.4.2",
     "prettier-plugin-svelte": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
@@ -33,6 +36,7 @@
     "svelte-check": "^4.0.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.0.0",
-    "vite": "^6.0.0"
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
   }
 }

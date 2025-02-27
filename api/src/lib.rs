@@ -1,6 +1,9 @@
 use poem_openapi::param::Path;
 use poem_openapi::{payload::Json, Object, OpenApi};
 
+pub type Api = (IndexRoutes, CustomerRoutes);
+pub fn create_api() -> Api { (IndexRoutes, CustomerRoutes) }
+
 #[derive(Object)]
 pub struct User {
     username: String,

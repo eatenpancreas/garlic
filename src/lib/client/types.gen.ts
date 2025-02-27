@@ -13,18 +13,18 @@ export type GetResponses = {
 
 export type GetResponse = GetResponses[keyof GetResponses];
 
-export type GetEchoData = {
+export type PostEchoData = {
     body: string;
     path?: never;
     query?: never;
     url: '/echo';
 };
 
-export type GetEchoResponses = {
+export type PostEchoResponses = {
     200: string;
 };
 
-export type GetEchoResponse = GetEchoResponses[keyof GetEchoResponses];
+export type PostEchoResponse = PostEchoResponses[keyof PostEchoResponses];
 
 export type GetCustomerCustomerIdData = {
     body?: never;

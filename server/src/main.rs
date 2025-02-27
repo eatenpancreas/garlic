@@ -1,14 +1,14 @@
-mod create_api;
+mod init_openapi_service;
 
 use std::{env};
-use create_api::create_api;
+use init_openapi_service::init_openapi_service;
 use poem::{listener::TcpListener, middleware::Cors, EndpointExt, Route, Server};
 
 #[tokio::main]
 async fn main() {
     dotenv::dotenv().unwrap();
 
-    let api_service = create_api();
+    let api_service = init_openapi_service();
     let ui = api_service.swagger_ui();
     let app = Route::new()
         .nest("/", api_service)

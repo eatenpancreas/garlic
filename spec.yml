@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Svelte.rs
-  version: 0.1.12
+  version: 0.1.21
 servers:
 - url: http://localhost:3000
 tags: []
@@ -17,7 +17,7 @@ paths:
               schema:
                 type: string
   /echo:
-    get:
+    post:
       summary: Echo
       requestBody:
         content:

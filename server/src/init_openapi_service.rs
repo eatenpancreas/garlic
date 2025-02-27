@@ -1,10 +1,10 @@
-use api_routes::{CustomerRoutes, IndexRoutes};
+use api::{create_api, Api};
 use poem_openapi::OpenApiService;
 use std::{env, fs};
 
-pub fn create_api() -> OpenApiService<(IndexRoutes, CustomerRoutes), ()> {
+pub fn init_openapi_service() -> OpenApiService<Api, ()> {
     let api_service = OpenApiService::new(
-        (IndexRoutes, CustomerRoutes),
+        create_api(),
         env::var("OPENAPI_TITLE").unwrap(),
         env::var("CARGO_PKG_VERSION").unwrap(),
     )

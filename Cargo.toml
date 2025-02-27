@@ -2,7 +2,7 @@
 resolver = "2"
 members = [
     "server",
-    "api_routes",
+    "api",
 ]
 
 [workspace.dependencies]

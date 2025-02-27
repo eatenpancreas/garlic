@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Hello World
+  version: 0.1.0
+servers:
+- url: http://localhost:3000
+tags: []
+paths:
+  /:
+    get:
+      summary: Hello world
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+  /joe:
+    get:
+      summary: Joe (test)
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      title: User
+      required:
+      - username
+      properties:
+        username:
+          type: string

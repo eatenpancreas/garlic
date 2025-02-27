@@ -1,3 +1,5 @@
+use std::{env, fs};
+
 use poem::{listener::TcpListener, Route, Server};
 use poem_openapi::{payload::Json, Object, OpenApi, OpenApiService};
 
@@ -29,6 +31,9 @@ impl Api {
 async fn main() {
     let api_service = OpenApiService::new(Api, "Hello World", env!("CARGO_PKG_VERSION"))
         .server("http://localhost:3000");
+
+    let spec_location = env::current_dir().unwrap().join("../spec.yml");
+    fs::write(spec_location, api_service.spec_yaml()).unwrap();
 
     let ui = api_service.swagger_ui();
     let app = Route::new().nest("/", api_service).nest("/docs", ui);

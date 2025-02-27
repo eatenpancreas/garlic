@@ -1,6 +1,5 @@
 test-results
 node_modules
-/api/target
 
 # Output
 .output
@@ -9,6 +8,7 @@ node_modules
 .wrangler
 /.svelte-kit
 /build
+/target
 
 # OS
 .DS_Store

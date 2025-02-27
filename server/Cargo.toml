@@ -1,11 +1,10 @@
 [package]
 name = "server"
-version = "0.1.4"
+version = "0.1.12"
 edition = "2021"
 
 [dependencies]
 api_routes = { path = "../api_routes" }
-api_core = { path = "../api_core" }
 dotenv = "0.15.0"
 poem = "3.1.7"
 poem-openapi = { workspace = true, features = ["swagger-ui"] }

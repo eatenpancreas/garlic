@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Svelte.rs
-  version: 0.1.4
+  version: 0.1.12
 servers:
 - url: http://localhost:3000
 tags: []
@@ -16,23 +16,39 @@ paths:
             application/json; charset=utf-8:
               schema:
                 type: string
-  /joe:
+  /echo:
     get:
-      summary: Joe (test)
+      summary: Echo
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              type: string
+        required: true
       responses:
         '200':
           description: ''
           content:
             application/json; charset=utf-8:
               schema:
-                $ref: '#/components/schemas/User'
-components:
-  schemas:
-    User:
-      type: object
-      title: User
-      required:
-      - username
-      properties:
-        username:
+                type: string
+  /customer/:customer_id:
+    get:
+      parameters:
+      - name: customer_id
+        schema:
           type: string
+        in: path
+        required: true
+        deprecated: false
+        explode: true
+        style: null
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+components:
+  schemas: {}

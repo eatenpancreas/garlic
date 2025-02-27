@@ -77,13 +77,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "api_core"
-version = "0.1.0"
-dependencies = [
- "poem-openapi",
-]
-
-[[package]]
 name = "api_routes"
 version = "0.1.0"
 dependencies = [
@@ -1200,9 +1193,8 @@ dependencies = [
 
 [[package]]
 name = "server"
-version = "0.1.4"
+version = "0.1.12"
 dependencies = [
- "api_core",
  "api_routes",
  "dotenv",
  "poem",

@@ -2,11 +2,13 @@
 ## Requirements
 
 - npx
+- bun
 - cargo
 - cargo edit (`cargo install cargo-edit`)
+- sqlx (`cargo install sqlx-cli --features postgres`)
 
-## To see your site
+## Commands
 
-```bash
-bun dev --open
-```
+- `bun dev --open` To see your site
+- `bun spec` To update the OpenAPI spec from your api to your frontend
+- `bun migrate` Sqlx migration tool

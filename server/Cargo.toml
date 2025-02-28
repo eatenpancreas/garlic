@@ -1,11 +1,12 @@
 [package]
 name = "server"
-version = "0.1.21"
+version = "0.1.22"
 edition = "2021"
 
 [dependencies]
 api = { path = "../api" }
 dotenv = "0.15.0"
-poem = "3.1.7"
 poem-openapi = { workspace = true, features = ["swagger-ui"] }
+poem.workspace = true
+sqlx.workspace = true
 tokio = { version = "1.43.0", features = ["rt-multi-thread"] }

@@ -1,13 +1,17 @@
 openapi: 3.0.0
 info:
   title: Svelte.rs
-  version: 0.1.21
+  version: 0.1.22
 servers:
 - url: http://localhost:3000
-tags: []
+tags:
+- name: Demo
+- name: Users
 paths:
-  /:
+  /demo/hello_from_rust:
     get:
+      tags:
+      - Demo
       summary: Hello world
       responses:
         '200':
@@ -16,28 +20,30 @@ paths:
             application/json; charset=utf-8:
               schema:
                 type: string
-  /echo:
-    post:
-      summary: Echo
-      requestBody:
-        content:
-          application/json; charset=utf-8:
-            schema:
-              type: string
-        required: true
+  /users:
+    get:
+      tags:
+      - Users
       responses:
         '200':
           description: ''
           content:
             application/json; charset=utf-8:
               schema:
-                type: string
-  /customer/:customer_id:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+      security:
+      - MySecurityScheme: []
+  /users/{user_id}:
     get:
+      tags:
+      - Users
       parameters:
-      - name: customer_id
+      - name: user_id
         schema:
           type: string
+          format: uuid
         in: path
         required: true
         deprecated: false
@@ -49,6 +55,78 @@ paths:
           content:
             application/json; charset=utf-8:
               schema:
+                $ref: '#/components/schemas/User'
+  /auth/register:
+    post:
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/RegisterUser'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json; charset=utf-8:
+              schema:
                 type: string
 components:
-  schemas: {}
+  schemas:
+    RegisterUser:
+      type: object
+      title: RegisterUser
+      required:
+      - email
+      - password
+      properties:
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        password:
+          type: string
+    User:
+      type: object
+      title: User
+      required:
+      - id
+      - role
+      - email
+      - is_active
+      - created_at
+      - updated_at
+      properties:
+        id:
+          type: string
+          format: uuid
+        role:
+          $ref: '#/components/schemas/UserRole'
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    UserRole:
+      type: string
+      enum:
+      - Admin
+      - Moderator
+      - User
+  securitySchemes:
+    MySecurityScheme:
+      type: http
+      scheme: bearer

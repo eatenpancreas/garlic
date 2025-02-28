@@ -1,36 +1,26 @@
-use poem_openapi::param::Path;
-use poem_openapi::{payload::Json, Object, OpenApi};
+mod users;
+use poem_openapi::Tags;
+use poem_openapi::{payload::Json, OpenApi};
+use users::{AuthRoutes, UserRoutes};
 
-pub type Api = (IndexRoutes, CustomerRoutes);
-pub fn create_api() -> Api { (IndexRoutes, CustomerRoutes) }
-
-#[derive(Object)]
-pub struct User {
-    username: String,
+pub type Api = (DemoRoutes, UserRoutes, AuthRoutes);
+pub fn create_api() -> Api {
+    (DemoRoutes, UserRoutes, AuthRoutes)
 }
 
-pub struct IndexRoutes;
+#[derive(Tags)]
+enum ApiTags {
+    Demo,
+    Users,
+}
 
-#[OpenApi]
-impl IndexRoutes {
+pub struct DemoRoutes;
+
+#[OpenApi(prefix_path = "/demo", tag = "ApiTags::Demo")]
+impl DemoRoutes {
     /// Hello world
-    #[oai(path = "/", method = "get")]
-    async fn index(&self) -> Json<&'static str> {
-        Json("Hello World")
-    }
-
-    /// Echo
-    #[oai(path = "/echo", method = "post")]
-    async fn echo(&self, noise: Json<String>) -> Json<String> {
-        noise
-    }
-}
-
-pub struct CustomerRoutes;
-#[OpenApi(prefix_path = "/customer/:customer_id")]
-impl CustomerRoutes {
-    #[oai(path = "/", method = "get")]
-    async fn hello(&self, customer_id: Path<String>) -> Json<String> {
-        Json(format!("Hello {}!", customer_id.0))
+    #[oai(path = "/hello_from_rust", method = "get")]
+    async fn hello_from_rust(&self) -> Json<&'static str> {
+        Json("Hello From Rust!")
     }
 }

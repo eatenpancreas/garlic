@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
-	import { postEcho } from '$lib/client';
+	import { postAuthRegister, postEcho } from '$lib/client';
 
 	let username = $state('');
 	onMount(async () => {
-		const joe = await postEcho({  body: "john!" });
+		const joe = await postEcho({ body: 'john!' });
 		if (joe.data) {
 			username = joe.data;
 		}
@@ -13,3 +13,18 @@
 
 <h1>Welcome to SvelteKit, {username}</h1>
 <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+
+<button
+	onclick={async () => {
+		let out = await postAuthRegister({
+			body: {
+				email: 'admin@ohm.com',
+				password: 'pwd123@gmail.com'
+			}
+		});
+
+		if (out.data) {
+			username = out.data;
+		}
+	}}>Aaaa</button
+>

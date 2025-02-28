@@ -15,6 +15,7 @@
     "test:all": "cargo test && bun spec:get && vitest",
     "spec": "cargo set-version --bump patch --package server && cargo test test_load_spec && bun spec:get && vitest run",
     "spec:get": "openapi-ts -i spec.yml -o src/lib/client -c @hey-api/client-fetch",
+    "migrate": "sqlx migrate",
     "format": "prettier --write .",
     "lint": "prettier --check ."
   },

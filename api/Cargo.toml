@@ -4,4 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+models = { path = "../models" }
 poem-openapi.workspace = true
+poem.workspace = true
+sqlx.workspace = true

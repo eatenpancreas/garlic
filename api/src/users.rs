@@ -6,6 +6,7 @@ use models::{
 };
 use poem::error::InternalServerError;
 use poem::{web::Data, Result};
+use poem_openapi::types::Email;
 use poem_openapi::{param::Path, payload::Json, Object, OpenApi};
 use sqlx::PgPool;
 
@@ -40,9 +41,13 @@ impl UserRoutes {
 
 #[derive(Object)]
 pub struct RegisterUser {
-    email: String,
+    #[oai(validator(max_length = 100))]
+    email: Email,
+    #[oai(validator(max_length = 50))]
     first_name: Option<String>,
+    #[oai(validator(max_length = 50))]
     last_name: Option<String>,
+    #[oai(validator(max_length = 72, min_length = 7))]
     password: String,
 }
 
@@ -69,7 +74,7 @@ impl AuthRoutes {
     ) -> Result<Json<AuthResponse>> {
         let user = User::create(
             pool,
-            user.email,
+            user.email.0,
             user.first_name,
             user.last_name,
             user.password,

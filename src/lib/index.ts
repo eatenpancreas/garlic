@@ -1,1 +1,3 @@
-// place files you want to import through the `$lib` alias in this folder.
+import { createApiClient } from './gen/client';
+
+export const client = createApiClient(import.meta.env.VITE_API_BASE_URL);

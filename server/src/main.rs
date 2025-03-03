@@ -1,7 +1,7 @@
 mod init_openapi_service;
 
 use init_openapi_service::init_openapi_service;
-use models::static_env::{API_BASE_URL, DATABASE_URL, SERVER_BIND_ADDR};
+use models::static_env::{DATABASE_URL, SERVER_BIND_ADDR, VITE_API_BASE_URL};
 use poem::{listener::TcpListener, middleware::Cors, EndpointExt, Route, Server};
 use sqlx::postgres::PgPoolOptions;
 
@@ -18,7 +18,7 @@ async fn main() {
         .data(pool);
 
     println!();
-    println!("🔥 Check the docs at \x1b]8;;{API_BASE_URL}/docs\x1b\\{API_BASE_URL}/docs\x1b]8;;\x1b\\ 🔥");
+    println!("🔥 Check the docs at \x1b]8;;{VITE_API_BASE_URL}/docs\x1b\\{VITE_API_BASE_URL}/docs\x1b]8;;\x1b\\ 🔥");
 
     Server::new(TcpListener::bind(SERVER_BIND_ADDR))
         .run(app)

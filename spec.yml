@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Svelte.rs
-  version: 0.1.27
+  version: 0.1.36
 servers:
 - url: http://localhost:3000
 tags:
@@ -17,7 +17,7 @@ paths:
         '200':
           description: ''
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 type: string
   /users:
@@ -28,7 +28,7 @@ paths:
         '200':
           description: ''
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 type: array
                 items:
@@ -53,7 +53,7 @@ paths:
         '200':
           description: ''
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 $ref: '#/components/schemas/User'
       security:
@@ -67,7 +67,7 @@ paths:
         '200':
           description: ''
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 $ref: '#/components/schemas/User'
       security:
@@ -78,7 +78,7 @@ paths:
       - Users
       requestBody:
         content:
-          application/json; charset=utf-8:
+          application/json:
             schema:
               $ref: '#/components/schemas/RegisterUser'
         required: true
@@ -86,7 +86,7 @@ paths:
         '200':
           description: ''
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 $ref: '#/components/schemas/AuthResponse'
 components:
@@ -111,12 +111,18 @@ components:
       properties:
         email:
           type: string
+          format: email
+          maxLength: 100
         first_name:
           type: string
+          maxLength: 50
         last_name:
           type: string
+          maxLength: 50
         password:
           type: string
+          maxLength: 72
+          minLength: 7
     User:
       type: object
       title: User

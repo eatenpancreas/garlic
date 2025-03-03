@@ -1,7 +1,7 @@
 use std::{env, fs};
 
 use api::{create_api, Api};
-use models::static_env::{API_BASE_URL, OPENAPI_TITLE};
+use models::static_env::{OPENAPI_TITLE, VITE_API_BASE_URL};
 use poem_openapi::OpenApiService;
 
 pub fn init_openapi_service() -> OpenApiService<Api, ()> {
@@ -10,7 +10,7 @@ pub fn init_openapi_service() -> OpenApiService<Api, ()> {
         OPENAPI_TITLE,
         env::var("CARGO_PKG_VERSION").unwrap(),
     )
-    .server(API_BASE_URL);
+    .server(VITE_API_BASE_URL);
 
     let mut current = env::current_dir().unwrap();
 
@@ -26,7 +26,11 @@ pub fn init_openapi_service() -> OpenApiService<Api, ()> {
     }
 
     let spec_location = current.join("spec.yml");
-    fs::write(spec_location, api_service.spec_yaml()).unwrap();
+    fs::write(
+        spec_location,
+        api_service.spec_yaml().replace("; charset=utf-8", ""),
+    )
+    .unwrap();
 
     api_service
 }

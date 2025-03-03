@@ -1,14 +1,16 @@
-use api::{create_api, Api};
-use poem_openapi::OpenApiService;
 use std::{env, fs};
+
+use api::{create_api, Api};
+use models::static_env::{API_BASE_URL, OPENAPI_TITLE};
+use poem_openapi::OpenApiService;
 
 pub fn init_openapi_service() -> OpenApiService<Api, ()> {
     let api_service = OpenApiService::new(
         create_api(),
-        env::var("OPENAPI_TITLE").unwrap(),
+        OPENAPI_TITLE,
         env::var("CARGO_PKG_VERSION").unwrap(),
     )
-    .server(env::var("API_BASE_URL").unwrap());
+    .server(API_BASE_URL);
 
     let mut current = env::current_dir().unwrap();
 

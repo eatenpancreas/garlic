@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Svelte.rs
-  version: 0.1.22
+  version: 0.1.27
 servers:
 - url: http://localhost:3000
 tags:
@@ -34,7 +34,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
       security:
-      - MySecurityScheme: []
+      - BearerToken: []
   /users/{user_id}:
     get:
       tags:
@@ -56,6 +56,22 @@ paths:
             application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/User'
+      security:
+      - BearerToken: []
+  /auth/user:
+    get:
+      tags:
+      - Users
+      summary: Gets the current user
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/User'
+      security:
+      - BearerToken: []
   /auth/register:
     post:
       tags:
@@ -72,9 +88,20 @@ paths:
           content:
             application/json; charset=utf-8:
               schema:
-                type: string
+                $ref: '#/components/schemas/AuthResponse'
 components:
   schemas:
+    AuthResponse:
+      type: object
+      title: AuthResponse
+      required:
+      - message
+      - token
+      properties:
+        message:
+          type: string
+        token:
+          type: string
     RegisterUser:
       type: object
       title: RegisterUser
@@ -127,6 +154,6 @@ components:
       - Moderator
       - User
   securitySchemes:
-    MySecurityScheme:
+    BearerToken:
       type: http
       scheme: bearer

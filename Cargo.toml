@@ -10,3 +10,4 @@ members = [
 poem = { version = "3.1.7" }
 poem-openapi = { version = "5.1.8", features = ["uuid", "email", "chrono", "sqlx"] }
 sqlx = { version = "0.8.3", features = ["postgres", "chrono", "uuid", "json", "derive", "runtime-tokio", "tls-native-tls", "migrate"] }
+

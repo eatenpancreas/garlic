@@ -21,7 +21,7 @@ pub enum UserRole {
     User = 0,
 }
 
-#[derive(NewType, Clone, Copy)]
+#[derive(NewType, Clone, Copy, Debug, PartialEq)]
 pub struct UserId(Uuid);
 
 impl From<Uuid> for UserId {
@@ -31,6 +31,10 @@ impl From<Uuid> for UserId {
 }
 
 impl UserId {
+    pub fn inner_id(&self) -> Uuid {
+        self.0
+    }
+
     pub async fn exists(&self, pool: &PgPool) -> Result<bool> {
         Ok(query!("SELECT id FROM users WHERE id = $1", self.0)
             .fetch_optional(pool)

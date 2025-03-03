@@ -1,11 +1,11 @@
 [package]
 name = "server"
-version = "0.1.22"
+version = "0.1.27"
 edition = "2021"
 
 [dependencies]
 api = { path = "../api" }
-dotenv = "0.15.0"
+models = { path = "../models" }
 poem-openapi = { workspace = true, features = ["swagger-ui"] }
 poem.workspace = true
 sqlx.workspace = true

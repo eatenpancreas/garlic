@@ -1,3 +1,5 @@
+# 🧄 garlic 🧄
+## An easy-to-use *fully type-safe* stack with a Rust backend and Typescript frontend
 
 ## Requirements
 

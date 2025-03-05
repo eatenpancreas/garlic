@@ -19,8 +19,8 @@ pub struct DemoRoutes;
 #[OpenApi(prefix_path = "/demo", tag = "ApiTags::Demo")]
 impl DemoRoutes {
     /// Hello world
-    #[oai(path = "/hello_from_rust", method = "get")]
+    #[oai(path = "/hello", method = "get")]
     async fn hello_from_rust(&self) -> Json<&'static str> {
-        Json("Hello From Rust!")
+        Json("Hello From Garlic!")
     }
 }

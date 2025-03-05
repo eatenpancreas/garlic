@@ -1,45 +1,42 @@
 {
-  "name": "svelte-rs",
-  "private": true,
-  "version": "0.0.1",
-  "type": "module",
-  "scripts": {
-    "server": "cargo run",
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
-    "prepare": "svelte-kit sync || echo ''",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "test:unit": "vitest",
-    "test:all": "cargo test && bun spec:get && vitest --run",
-    "spec": "cargo set-version --bump patch --package server && cargo test test_load_spec && bun spec:get && vitest spec --run",
-    "spec:get": "bun openapi-zod-client spec.yml -o ./src/lib/gen/client.ts",
-    "migrate": "sqlx migrate",
-    "format": "prettier --write .",
-    "lint": "prettier --check ."
-  },
-  "devDependencies": {
-    "@modyfi/vite-plugin-yaml": "^1.1.1",
-    "@sveltejs/adapter-auto": "^4.0.0",
-    "@sveltejs/kit": "^2.16.0",
-    "@sveltejs/vite-plugin-svelte": "^5.0.0",
-    "@tailwindcss/vite": "^4.0.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/svelte": "^5.2.4",
-    "jsdom": "^26.0.0",
-    "openapi-zod-client": "^1.18.3",
-    "prettier": "^3.4.2",
-    "prettier-plugin-svelte": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "svelte": "^5.0.0",
-    "svelte-check": "^4.0.0",
-    "tailwindcss": "^4.0.0",
-    "typescript": "^5.0.0",
-    "vite": "^6.0.0",
-    "vitest": "^3.0.0"
-  },
-  "dependencies": {
-    "typed-openapi": "^0.10.1"
-  }
+	"name": "mygarlic",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"garlic": "../garlic-cli/target/debug/garlic-cli",
+		"dev": "vite dev",
+		"aaa": "ls",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:unit": "vitest",
+		"format": "prettier --write .",
+		"lint": "prettier --check ."
+	},
+	"devDependencies": {
+		"@modyfi/vite-plugin-yaml": "^1.1.1",
+		"@sveltejs/adapter-auto": "^4.0.0",
+		"@sveltejs/kit": "^2.16.0",
+		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@tailwindcss/vite": "^4.0.0",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/svelte": "^5.2.4",
+		"jsdom": "^26.0.0",
+		"openapi-zod-client": "^1.18.3",
+		"prettier": "^3.4.2",
+		"prettier-plugin-svelte": "^3.3.3",
+		"prettier-plugin-tailwindcss": "^0.6.11",
+		"svelte": "^5.0.0",
+		"svelte-check": "^4.0.0",
+		"tailwindcss": "^4.0.0",
+		"typescript": "^5.0.0",
+		"vite": "^6.0.0",
+		"vitest": "^3.0.0"
+	},
+	"dependencies": {
+		"typed-openapi": "^0.10.1"
+	}
 }

@@ -40,8 +40,8 @@ const endpoints = makeApi([
 	},
 	{
 		method: "get",
-		path: "/demo/hello_from_rust",
-		alias: "getDemohello_from_rust",
+		path: "/demo/hello",
+		alias: "getDemohello",
 		requestFormat: "json",
 		response: z.string(),
 	},

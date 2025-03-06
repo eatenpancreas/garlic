@@ -1,5 +1,6 @@
 [hooks]
-pre-commit = "cargo test && bun garlic prepare"
+pre-commit = "cargo test"
+pre-push = "bun garlic prepare && git add path/to/generated/file && (git diff --staged --quiet || git commit --amend --no-edit)"
 
 [logging]
 verbose = true

@@ -6,9 +6,6 @@
 	"scripts": {
 		"garlic": "../garlic-cli/target/debug/garlic-cli",
 		"dev": "vite dev",
-		"aaa": "ls",
-		"build": "vite build",
-		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",

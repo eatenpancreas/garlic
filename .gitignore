@@ -1,5 +1,5 @@
 test-results
-node_modules
+app/node_modules
 .idea
 
 # Output
@@ -7,9 +7,10 @@ node_modules
 .vercel
 .netlify
 .wrangler
-/.svelte-kit
-/build
-/target
+app/.svelte-kit
+app/build
+app/target
+target
 
 # OS
 .DS_Store
@@ -22,5 +23,5 @@ Thumbs.db
 !.env.test
 
 # Vite
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
+*/vite.config.js.timestamp-*
+*/vite.config.ts.timestamp-*

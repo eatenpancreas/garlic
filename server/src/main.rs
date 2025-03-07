@@ -20,7 +20,7 @@ async fn main() {
         .data(pool);
 
     println!();
-    println!("🧄 Check the docs at \x1b]8;;{VITE_API_BASE_URL}/docs\x1b\\{VITE_API_BASE_URL}/docs\x1b]8;;\x1b\\ 🧄");
+    println!("🧄 Check the generated docs at \x1b]8;;{VITE_API_BASE_URL}/docs\x1b\\{VITE_API_BASE_URL}/docs\x1b]8;;\x1b\\ 🧄");
 
     Server::new(TcpListener::bind(SERVER_BIND_ADDR))
         .run(app)

@@ -1997,7 +1997,7 @@ dependencies = [
 
 [[package]]
 name = "server"
-version = "0.1.39"
+version = "0.1.41"
 dependencies = [
  "api",
  "models",

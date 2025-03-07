@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Garlic
-  version: 0.1.39
+  version: 0.1.41
 servers:
 - url: http://localhost:3000
 tags:

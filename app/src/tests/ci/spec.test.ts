@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import Spec from '../../../spec.yml';
+import Spec from '../../../../spec.yml';
 
 describe('CI', () => {
 	it('GET endpoints should never have request bodies', () => {
